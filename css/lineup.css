@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Raleway:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --azul-noite:#071426;
+    --azul-profundo:#0b1d35;
+    --azul-petroleo:#102b48;
+    --preto:#03060b;
+    --preto-azulado:#060c15;
+
+    --branco:#f4f5f6;
+    --prata:#c6c8ca;
+    --prata-clara:#e1e3e4;
+
+    --cinza:#9299a2;
+
+    --borda:rgba(210,220,230,.16);
+    --borda-prata:rgba(220,225,230,.32);
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    color:var(--branco);
+    font-family:'Raleway',sans-serif;
+    line-height:1.6;
+    background-color:var(--preto);
+
+    background-image:
+        radial-gradient(circle at 15% 15%,rgba(74,116,155,.14),transparent 22%),
+        radial-gradient(circle at 85% 20%,rgba(150,165,180,.12),transparent 20%),
+        radial-gradient(circle at 50% 0%,rgba(15,48,82,.55),transparent 45%),
+        radial-gradient(ellipse at 80% 75%,rgba(180,190,200,.07),transparent 30%),
+        linear-gradient(135deg,#02050a 0%,#071426 35%,#0b1d35 60%,#03060b 100%);
+
+    background-attachment:fixed;
+    overflow-x:hidden;
+}
+
+body::before {
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    opacity:.16;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.025) 0px,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    mix-blend-mode:overlay;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+img {
+    max-width:100%;
+    display:block;
+}
+
+/* HEADER */
+
+header {
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3,6,11,.98),
+            rgba(7,20,38,.94)
+        );
+
+    border-bottom:1px solid var(--borda-prata);
+    backdrop-filter:blur(14px);
+}
+
+.navbar {
+    max-width:1200px;
+    min-height:80px;
+    margin:auto;
+    padding:0 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo {
+    font-family:'Archivo Black',sans-serif;
+    font-size:25px;
+    letter-spacing:1px;
+}
+
+.logo span {
+    color:var(--prata);
+}
+
+.menu {
+    display:flex;
+    align-items:center;
+    gap:25px;
+    list-style:none;
+}
+
+.menu a {
+    font-size:14px;
+    font-weight:700;
+    color:var(--prata-clara);
+    transition:.3s;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color:white;
+}
+
+.menu a.ativo {
+    border-bottom:1px solid var(--prata);
+    padding-bottom:5px;
+}
+
+/* GERAL */
+
+.container {
+    width:min(1150px,90%);
+    margin:auto;
+}
+
+section {
+    padding:90px 0;
+}
+
+section:nth-of-type(even) {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8,25,46,.85),
+            rgba(4,10,18,.95)
+        );
+}
+
+h1,
+h2,
+h3 {
+    font-family:'Archivo Black',sans-serif;
+    line-height:1.05;
+    color:var(--branco);
+}
+
+h1 {
+    font-size:clamp(55px,10vw,120px);
+    letter-spacing:-3px;
+}
+
+h2 {
+    font-size:clamp(38px,6vw,70px);
+    margin-bottom:25px;
+}
+
+h3 {
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+p {
+    color:var(--cinza);
+}
+
+.kicker {
+    color:var(--prata-clara);
+    text-transform:uppercase;
+    font-weight:800;
+    letter-spacing:3px;
+    margin-bottom:15px;
+}
+
+.texto-destaque {
+    font-size:20px;
+    max-width:700px;
+    color:var(--prata);
+}
+
+/* ARTISTAS */
+
+.artistas {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.artista {
+    border:1px solid var(--borda);
+    overflow:hidden;
+    background:var(--preto-azulado);
+    transition:.3s;
+}
+
+.artista:hover {
+    border-color:var(--borda-prata);
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35);
+}
+
+.artista-imagem {
+    height:330px;
+    position:relative;
+    overflow:hidden;
+    background:var(--azul-noite);
+}
+
+.artista-imagem img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+
+    transition:
+        transform .5s ease,
+        filter .5s ease;
+}
+
+.artista:hover .artista-imagem img {
+    transform:scale(1.06);
+    filter:brightness(1.08);
+}
+
+.artista-imagem::after {
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(3,6,11,.75) 100%
+        );
+
+    pointer-events:none;
+}
+
+.artista-imagem span {
+    position:absolute;
+    z-index:2;
+
+    bottom:20px;
+    left:20px;
+
+    font-family:'Archivo Black',sans-serif;
+    font-size:25px;
+}
+
+.artista-info {
+    padding:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,43,72,.55),
+            rgba(3,7,13,.95)
+        );
+}
+
+.artista-info h3 {
+    margin-bottom:7px;
+}
+
+.artista-info p {
+    font-size:14px;
+    color:var(--cinza);
+}
+
+/* PROGRAMAÇÃO */
+
+.programacao {
+    border-top:1px solid var(--borda-prata);
+}
+
+.horario {
+    display:grid;
+    grid-template-columns:130px 1fr;
+
+    border-bottom:1px solid var(--borda);
+}
+
+.horario div {
+    padding:20px;
+}
+
+.hora {
+    font-family:'Archivo Black';
+    font-size:22px;
+    color:var(--prata-clara);
+}
+
+/* FOOTER */
+
+footer {
+    border-top:1px solid var(--borda-prata);
+    padding:35px 0;
+    color:var(--cinza);
+
+    background:
+        linear-gradient(
+            180deg,
+            #050a12,
+            #020409
+        );
+}
+
+.footer-conteudo {
+    width:min(1150px,90%);
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+/* RESPONSIVO */
+
+@media (max-width:900px) {
+
+    .navbar {
+        flex-direction:column;
+        padding:20px;
+    }
+
+    .menu {
+        justify-content:center;
+        gap:14px;
+        flex-wrap:wrap;
+    }
+
+    .artistas {
+        grid-template-columns:1fr 1fr;
+    }
+
+    .artista-imagem {
+        height:360px;
+    }
+}
+
+@media (max-width:600px) {
+
+    section {
+        padding:65px 0;
+    }
+
+    .artistas {
+        grid-template-columns:1fr;
+    }
+
+    .menu {
+        gap:10px;
+    }
+
+    .menu a {
+        font-size:12px;
+    }
+
+    h1 {
+        font-size:55px;
+    }
+
+    .horario {
+        grid-template-columns:80px 1fr;
+    }
+
+    .artista-imagem {
+        height:420px;
+    }
+
+    .footer-conteudo {
+        flex-direction:column;
+    }
+}
